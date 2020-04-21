@@ -3,8 +3,6 @@ from http.client import HTTPSConnection
 from json import dumps, loads
 
 def get(token, max):
-    token = random_token
-
     request_data = {
       'jsonrpc': '2.0',
       'method': 'generateIntegers',
