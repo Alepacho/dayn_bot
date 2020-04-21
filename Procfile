@@ -1,1 +1,1 @@
-worker: heroku python3 bot.py $DISCORD_TOKEN $RANDOM_TOKEN
+worker: heroku python bot.py $DISCORD_TOKEN $RANDOM_TOKEN
