@@ -11,3 +11,5 @@ class foo(commands.Cog):
 #
 def setup(bot):
     bot.add_cog(foo(bot))
+
+#an example cog

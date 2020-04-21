@@ -1,12 +1,14 @@
 import sys
 import discord
-#from commands import *
-import rndapi
 from discord.ext import commands
 
+from config import *
+#
+#
+
 # passing tokens though args
-discord_token = sys.argv[1]
-random_token  = sys.argv[2]
+DISCORD_TOKEN = sys.argv[1]
+RANDOM_TOKEN  = sys.argv[2]
 
 bot = commands.Bot(command_prefix = 'greg ')
 
@@ -36,5 +38,6 @@ async def die(ctx):
 	await ctx.bot.logout()
 
 bot.load_extension("cogs.foo")
+bot.load_extension("cogs.roll")
 
-bot.run(discord_token)
+bot.run(DISCORD_TOKEN)
