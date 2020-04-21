@@ -10,6 +10,9 @@ random_token  = sys.argv[2]
 
 bot = commands.Bot(command_prefix = 'greg ')
 
+@bot.event
+async def on_ready():
+	await bot.change_presence(activity = discord.Game(name = "'greg '"))
 #
 @bot.command()
 async def ping(ctx):
@@ -32,5 +35,6 @@ async def die(ctx):
 	await ctx.send('rip')
 	await ctx.bot.logout()
 
+bot.load_extension("cogs.foo")
 
 bot.run(discord_token)
