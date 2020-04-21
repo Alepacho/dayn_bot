@@ -2,8 +2,8 @@
 from http.client import HTTPSConnection
 from json import dumps, loads
 
-def get(max):
-    token = '2d1c0ee4-7945-49a3-8e39-ae076ce9fde6'
+def get(token, max):
+    token = random_token
 
     request_data = {
       'jsonrpc': '2.0',

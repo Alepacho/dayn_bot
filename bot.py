@@ -4,8 +4,9 @@ import discord
 import rndapi
 from discord.ext import commands
 
-# passing token though args
-token = sys.argv[1]
+# passing tokens though args
+discord_token = sys.argv[1]
+random_token  = sys.argv[2]
 
 bot = commands.Bot(command_prefix = 'greg ')
 
@@ -22,7 +23,7 @@ async def say(ctx, *msg):
 
 @bot.command()
 async def roll(ctx, max = 100):
-	result = rndapi.get(max)
+	result = rndapi.get(random_token, max)
 	await ctx.send('Result: {_result}'.format(_result = result))
 
 @bot.command()
@@ -32,4 +33,4 @@ async def die(ctx):
 	await ctx.bot.logout()
 
 
-bot.run(token)
+bot.run(discord_token)
