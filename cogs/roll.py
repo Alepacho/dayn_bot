@@ -36,7 +36,7 @@ class roll(commands.Cog):
         response = connection.getresponse()
         response_data = loads(response.read().decode())
 
-        return response_data['result']['random']['data'][0]
+        await ctx.send('Result: {result}'.format(result = response_data['result']['random']['data'][0]))
 
 #
 def setup(bot):

@@ -27,11 +27,6 @@ async def say(ctx, *msg):
 	await ctx.send(text)
 
 @bot.command()
-async def roll(ctx, max = 100):
-	result = rndapi.get(random_token, max)
-	await ctx.send('Result: {_result}'.format(_result = result))
-
-@bot.command()
 @commands.is_owner()
 async def die(ctx):
 	await ctx.send('rip')
