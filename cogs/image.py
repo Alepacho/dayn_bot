@@ -68,6 +68,7 @@ class image(commands.Cog):
     async def smile(self, ctx, url):
         r = is_valid_image(url)
         if isinstance(r, str):
+            await ctx.send(r)
             return
         
         await ctx.send('Processing...')
