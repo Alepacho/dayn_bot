@@ -5,6 +5,7 @@ class say(commands.Cog):
         self.bot = bot
 
     @commands.command(pass_context = True)
+    @commands.cooldown(1, 1)
     async def say(self, ctx, *msg):
         text = ' '.join(msg)
         await ctx.message.delete()

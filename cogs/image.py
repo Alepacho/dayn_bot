@@ -18,16 +18,16 @@ def valid_format(_ext):
 
 def is_valid_image(_url):
     try:
-        r = requests.get(url, stream = True)
+        result = requests.get(_url, stream = True)
     except:
-        return 'Unable to download file.'
+        return 'Unable to get file.'
     
-    ext = splitext(urlparse(url).path)[1]
+    ext = splitext(urlparse(_url).path)[1]
 
     if not valid_format(ext):
         return 'Unsupported file format.'
     
-    return r
+    return result
 
 class image(commands.Cog):
     def __init__(self, bot):
@@ -38,6 +38,7 @@ class image(commands.Cog):
     async def gray(self, ctx, url):
         r = is_valid_image(url)
         if isinstance(r, str):
+            await ctx.send(r)
             return
         
         await ctx.send('Processing...')
