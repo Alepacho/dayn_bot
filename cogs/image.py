@@ -13,7 +13,7 @@ class image(commands.Cog):
         r = requests.get(url, stream=True)
         ext = os.path.splitext(url)[1]
 
-        if r.getcode() != 200:
+        if r.status_code != 200:
             await ctx.send('Unable to download file.')
             return
         
