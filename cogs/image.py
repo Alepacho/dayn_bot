@@ -2,7 +2,7 @@ from discord.ext import commands
 
 import wand                         # make magic
 import requests                     # download file
-import os                           # getting file extension
+from os.path import splitext        # getting file extension
 from urllib.parse import urlparse   #
 
 def valid_format(_ext):
@@ -24,9 +24,8 @@ class image(commands.Cog):
             r = requests.get(url, stream=True)
         except Exception:
             await ctx.send('Unable to download file.')
-
-        parsed = urlparse(url)
-        ext = splitext(parsed.path)[1]
+        
+        ext = splitext(urlparse(url).path)[1]
 
         if not valid_format(ext):
             await ctx.send('Unsupported file format.')
