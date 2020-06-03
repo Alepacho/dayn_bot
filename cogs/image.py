@@ -89,8 +89,11 @@ class image(commands.Cog):
             await ctx.send('Unknown error.')
             return
         
-        result = img.apply_filter('smile')
-
+        try:
+            result = img.apply_filter('smile')
+        except BadFilterID:
+            await ctx.send('Unknown error.')
+            return
         await ctx.send(result)
 
 #
