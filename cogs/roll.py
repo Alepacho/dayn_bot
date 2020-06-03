@@ -12,7 +12,6 @@ class roll(commands.Cog):
 
     @commands.command(pass_context = True)
     async def roll(self, ctx, max):
-        print('token: {tok}'.format(tok = RANDOM_TOKEN))
         request_data = {
           'jsonrpc': '2.0',
           'method': 'generateIntegers',

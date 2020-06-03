@@ -1,1 +1,4 @@
 discord.py
+wand
+requests
+Pillow
