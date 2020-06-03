@@ -20,14 +20,12 @@ def is_valid_image(_url):
     try:
         r = requests.get(url, stream = True)
     except:
-        await ctx.send('Unable to download file.')
-        return False
+        return 'Unable to download file.'
     
     ext = splitext(urlparse(url).path)[1]
 
     if not valid_format(ext):
-        await ctx.send('Unsupported file format.')
-        return False
+        return 'Unsupported file format.'
     
     return r
 
@@ -38,9 +36,8 @@ class image(commands.Cog):
     @commands.command(pass_context = True)
     @commands.cooldown(1, 3)
     async def gray(self, ctx, url):
-        try:
-            r = is_valid_image(url)
-        except False:
+        r = is_valid_image(url)
+        if isinstance(r, str):
             return
         
         await ctx.send('Processing...')
@@ -69,9 +66,8 @@ class image(commands.Cog):
     @commands.command(pass_context = True)
     @commands.cooldown(1, 3)
     async def smile(self, ctx, url):
-        try:
-            r = is_valid_image(url)
-        except False:
+        r = is_valid_image(url)
+        if isinstance(r, str):
             return
         
         await ctx.send('Processing...')
@@ -92,7 +88,7 @@ class image(commands.Cog):
             return
         
         result = img.apply_filter('smile')
-        
+
         await ctx.send(result)
 
 #
