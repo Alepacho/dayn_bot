@@ -19,8 +19,10 @@ class image(commands.Cog):
 
     @commands.command(pass_context = True)
     async def gray(self, ctx, url):
-        try r = requests.get(url, stream=True)
-        except await ctx.send('Unable to download file.')
+        try:
+            r = requests.get(url, stream=True)
+        except Exception:
+            await ctx.send('Unable to download file.')
 
         parsed = urlparse(url)
         file_name, ext = splitext(parsed.path)
