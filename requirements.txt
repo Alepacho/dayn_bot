@@ -2,4 +2,3 @@ discord.py
 wand
 requests
 Pillow
-urlparse

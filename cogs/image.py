@@ -3,7 +3,7 @@ from discord.ext import commands
 import wand                         # make magic
 import requests                     # download file
 import os                           # getting file extension
-from urlparse import urlparse       #
+import urllib.parse as urlparse     #
 
 def valid_format(_ext):
     vf_list = {
