@@ -28,7 +28,7 @@ class image(commands.Cog):
         file_name, ext = splitext(parsed.path)
 
         if not valid_format(ext):
-            except await ctx.send('Unsupported file format.')
+            await ctx.send('Unsupported file format.')
 
         
         await ctx.send('Processing {}...'.format(ext))
