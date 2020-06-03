@@ -24,6 +24,7 @@ class image(commands.Cog):
             r = requests.get(url, stream = True)
         except Exception:
             await ctx.send('Unable to download file.')
+            return
         
         ext = splitext(urlparse(url).path)[1]
 
@@ -38,8 +39,8 @@ class image(commands.Cog):
 
         # saving raw
         with open(file_name_raw, 'wb') as img:
-            img.write(response.content)
-        del response
+            img.write(r.content)
+        del r
 
         # making it gray (wow)
         with wand.image.Image(filename = file_name_raw) as img:
