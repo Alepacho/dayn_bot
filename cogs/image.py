@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-import wand                         # make magic
+from wand.image import Image         # make magic
 import requests                     # download file
 from os.path import splitext        # getting file extension
 from urllib.parse import urlparse   #
@@ -53,7 +53,7 @@ class image(commands.Cog):
         del r
 
         # making it gray (wow)
-        with wand.image.Image(filename = file_name_raw) as img:
+        with Image(filename = file_name_raw) as img:
             if (img.width < 2048 and img.height < 2048):
                 img.type = 'grayscale'
                 img.save(filename = file_name_rst)
