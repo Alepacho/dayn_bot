@@ -21,7 +21,7 @@ class image(commands.Cog):
     @commands.command(pass_context = True)
     async def gray(self, ctx, url):
         try:
-            r = requests.get(url, stream=True)
+            r = requests.get(url, stream = True)
         except Exception:
             await ctx.send('Unable to download file.')
         
@@ -29,14 +29,25 @@ class image(commands.Cog):
 
         if not valid_format(ext):
             await ctx.send('Unsupported file format.')
-
+            return
         
-        await ctx.send('Processing {}...'.format(ext))
-        #with open('magik_original.png', 'wb') as img:
-        #    img.write(response.content)
-        #del response
+        await ctx.send('Processing...')
 
-        #with Image(filename='color.jpg') as img:
+        file_name_raw = 'gray_raw{}'.format(ext)
+        file_name_rst = 'gray{}'.format(ext)
+
+        # saving raw
+        with open(file_name_raw, 'wb') as img:
+            img.write(response.content)
+        del response
+
+        # making it gray (wow)
+        with wand.image.Image(filename = file_name_raw) as img:
+            img.type = 'grayscale'
+            img.save(filename = file_name_rst)
+        
+        # send the result
+        await ctx.send(file = discord.File(file_name_rst))
 
 #
 def setup(bot):
