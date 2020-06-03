@@ -91,7 +91,7 @@ class image(commands.Cog):
         
         try:
             result = img.apply_filter('smile')
-        except BadFilterID:
+        except faces.BadFilterID:
             await ctx.send('Unknown error.')
             return
         await ctx.send(result)
