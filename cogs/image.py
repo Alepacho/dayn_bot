@@ -1,11 +1,12 @@
 import discord
 from discord.ext import commands
 
-from wand.image import Image         # make magic
+from wand.image import Image        # make magic
 import requests                     # download file
 from os.path import splitext        # getting file extension
 from urllib.parse import urlparse   #
 import faces                        # FaceAPP API
+from io import BytesIO              #
 
 def valid_format(_ext):
     vf_list = {
@@ -71,14 +72,17 @@ class image(commands.Cog):
         if isinstance(r, str):
             await ctx.send(r)
             return
-        
+        del r
+
         await ctx.send('Processing...')
         
         ext = splitext(urlparse(url).path)[1]
         file_name = 'smile{}'.format(ext)
+        _url = url
 
+        
         try:
-            img = faces.FaceAppImage(url = url)
+            img = faces.FaceAppImage(url = _url)
         except faces.ImageHasNoFaces:
             await ctx.send('Face is not recognized.')
             return
@@ -88,13 +92,23 @@ class image(commands.Cog):
         except faces.BaseFacesException:
             await ctx.send('Unknown error.')
             return
-        
+        except:
+            await ctx.send('API is dead')
+            return
+
         try:
             result = img.apply_filter('smile')
         except faces.BadFilterID:
+            await ctx.send('Filter error.')
+            return
+        except:
             await ctx.send('Unknown error.')
             return
-        await ctx.send(result)
+
+        with open(file_name, 'wb') as img:
+            img.write(BytesIO(result))
+
+        await ctx.send(file = discord.File(file_name))
 
 #
 def setup(bot):

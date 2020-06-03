@@ -1,1 +1,7 @@
 how2run.txt
+gray_raw.jpg
+gray.jpg
+__pycache__/config.cpython-37.pyc
+cogs/__pycache__/image.cpython-37.pyc
+cogs/__pycache__/say.cpython-37.pyc
+cogs/__pycache__/roll.cpython-37.pyc
