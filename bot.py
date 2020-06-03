@@ -18,7 +18,7 @@ async def on_ready():
 #bot.load_extension("cogs.foo")
 bot.load_extension("cogs.roll")
 bot.load_extension("cogs.say")
-bot.load_extension("cogs.magik")
+#bot.load_extension("cogs.magik")
 bot.load_extension("cogs.image")
 
 bot.run(DISCORD_TOKEN)

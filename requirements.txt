@@ -2,3 +2,4 @@ discord.py
 wand
 requests
 Pillow
+git+https://github.com/vasilysinitsin/Faces.git
