@@ -15,4 +15,3 @@ class say(commands.Cog):
 def setup(bot):
     bot.add_cog(say(bot))
 
-#an example cog

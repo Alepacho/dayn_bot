@@ -10,9 +10,10 @@ from io import BytesIO              #
 
 def valid_format(_ext):
     vf_list = {
-        '.jpg': True,
-        '.png': True,
-        '.gif': True
+        '.jpg':  True,
+        '.jpeg': True,
+        '.png':  True,
+        '.gif':  True
     }
 
     return vf_list.get(_ext, False)
