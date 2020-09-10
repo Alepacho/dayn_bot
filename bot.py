@@ -5,11 +5,11 @@ from discord.ext.commands import MissingPermissions
 from discord.ext.commands import NotOwner
 from config import *
 
-bot = commands.Bot(command_prefix = 'danik ')
+bot = commands.Bot(command_prefix = 'dayn ')
 
 @bot.event
 async def on_ready():
-	await bot.change_presence(activity = discord.Game(name = "type 'danik help'"))
+	await bot.change_presence(activity = discord.Game(name = "type 'dayn help'"))
 
 @bot.event
 async def on_command_error(ctx, error):
